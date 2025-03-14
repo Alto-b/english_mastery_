@@ -44,49 +44,52 @@ class IELTSTestTabView extends StatelessWidget {
     MapEntry<String, String> randomWord = model.getWordOfTheDay();
     return Scaffold(
       body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Lottie.asset('assets/lottie/bg_wave.json'),
-            Center(
-              child: Column(
-                children: [
-                  const Gap(20),
-                  HomeSearchWidget(
-                      screenHeight: screenHeight, screenWidth: screenWidth),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 24.0),
-                    child: SizedBox(
-                      // color: Colors.amber,
-                      height: screenHeight / 2.4,
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: tileList.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 25,
-                          mainAxisSpacing: 25.0,
-                          childAspectRatio:
-                              1, // Adjust the aspect ratio as needed
+        child: Center(
+          child: Stack(
+            children: [
+              // Lottie.asset('assets/lottie/bg_wave.json'),
+              const Gap(20),
+              Center(
+                child: Column(
+                  children: [
+                    Gap(20),
+                    HomeSearchWidget(
+                        screenHeight: screenHeight, screenWidth: screenWidth),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 24.0),
+                      child: SizedBox(
+                        // color: Colors.amber,
+                        height: screenHeight / 2.4,
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: tileList.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 25,
+                            mainAxisSpacing: 25.0,
+                            childAspectRatio:
+                                1, // Adjust the aspect ratio as needed
+                          ),
+                          itemBuilder: (context, index) {
+                            return _buildTestTile(
+                              context,
+                              tileList[index]["title"],
+                              tileList[index]["icon"],
+                              tileList[index]
+                                  ["onClick"], // Pass the onClick callback
+                            );
+                          },
                         ),
-                        itemBuilder: (context, index) {
-                          return _buildTestTile(
-                            context,
-                            tileList[index]["title"],
-                            tileList[index]["icon"],
-                            tileList[index]
-                                ["onClick"], // Pass the onClick callback
-                          );
-                        },
                       ),
                     ),
-                  ),
-                  const Gap(20),
-                ],
-              ),
-            ),
-          ],
+                    const Gap(20),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
