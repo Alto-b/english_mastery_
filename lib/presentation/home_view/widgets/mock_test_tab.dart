@@ -1,4 +1,5 @@
 import 'package:english_mastery/domain/word_of_the_day_model.dart';
+import 'package:english_mastery/presentation/conversation_view/conversation_screen.dart';
 import 'package:english_mastery/presentation/grammar_view/grammar_screen.dart';
 import 'package:english_mastery/presentation/home_view/widgets/word_of_the_day.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/vocabulary_screen.dart';
@@ -9,44 +10,73 @@ import 'package:lottie/lottie.dart';
 
 class GeneralTestTabView extends StatelessWidget {
   const GeneralTestTabView({super.key});
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     WordOfTheDayModel model = WordOfTheDayModel();
     MapEntry<String, String> randomWord = model.getWordOfTheDay();
+
     return Scaffold(
       body: Stack(
         children: [
           Lottie.asset('assets/lottie/bg_wave.json'),
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          SafeArea(
             child: Column(
               children: [
                 const Gap(20),
+                // Sticky Word of the Day Card
                 WordOfTheDayWidget(randomWord: randomWord),
-                const Gap(20),
-                GeneralSubListTile(
-                  title: "Grammar",
-                  subtitle: "Explore Grammar Tasks",
-                  leadingIcon: Icons.book_online_rounded,
-                  onTap: () {
-                    Get.to(GrammarScreen());
-                  },
-                ),
-                GeneralSubListTile(
-                  title: "Vocabulary",
-                  subtitle: "Explore Vocabulary Tasks",
-                  leadingIcon: Icons.book_outlined,
-                  onTap: () {
-                    Get.to(VocabularyScreen());
-                  },
+                // const Gap(5),
+                // Scrollable Content
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Container(
+                      // color: Colors.red,
+                      width: Get.width,
+                      child: Column(
+                        children: [
+                          GeneralSubListTile(
+                            title: "Conversational Partner",
+                            subtitle: "Test your speaking skills",
+                            leadingIcon: Icons.chat,
+                            onTap: () {
+                              Get.to(ConversationScreen());
+                            },
+                          ),
+                          GeneralSubListTile(
+                            title: "Grammar",
+                            subtitle: "Explore Grammar Tasks",
+                            leadingIcon: Icons.book_online_rounded,
+                            onTap: () {
+                              Get.to(GrammarScreen());
+                            },
+                          ),
+                          GeneralSubListTile(
+                            title: "Vocabulary",
+                            subtitle: "Explore Vocabulary Tasks",
+                            leadingIcon: Icons.book_outlined,
+                            onTap: () {
+                              Get.to(VocabularyScreen());
+                            },
+                          ),
+                          // GeneralSubListTile(
+                          //   title: "Vocabulary",
+                          //   subtitle: "Explore Vocabulary Tasks",
+                          //   leadingIcon: Icons.book_outlined,
+                          //   onTap: () {
+                          //     Get.to(VocabularyScreen());
+                          //   },
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
-          )),
+          ),
         ],
       ),
     );
