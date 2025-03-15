@@ -124,17 +124,17 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                                     ),
                                   ),
                                   Positioned(
-                                    bottom: 0,
-                                    right: 0,
+                                    bottom: 10,
+                                    right: 10,
                                     child: CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor: Colors.white,
+                                      radius: 10,
+                                      backgroundColor: Colors.transparent,
                                       child: IconButton(
                                         onPressed:
                                             switchAvatar, // Direct function call
                                         icon: const Icon(
-                                          Icons.edit_outlined,
-                                          color: Colors.blue,
+                                          Icons.touch_app_outlined,
+                                          color: Colors.black38,
                                         ),
                                         padding: EdgeInsets
                                             .zero, // Ensure the padding is zero
