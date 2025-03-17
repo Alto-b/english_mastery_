@@ -38,4 +38,11 @@ class URLs {
   static const comparitives_superlatives = 'grammar/comparatives_superlatives/';
   static const modals = 'grammar/modals/';
   static const passive_causative = 'grammar/passive_causative/';
+
+  //converations
+  static const start_chat = 'start_chat';
+  static const chat = 'chat';
+  static const chat_history = 'history/';
+  static const chat_list = 'chat-history/';
+  static const conversation_feedback = '/conversation-feedback';
 }
