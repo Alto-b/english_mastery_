@@ -89,6 +89,4 @@ English Mastery is a comprehensive self-learning application designed to help us
 ## Contribution
 Contributions are welcome! Feel free to submit issues or pull requests to improve the project.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
