@@ -20,6 +20,18 @@ class ConversationController extends GetxController {
   final record = AudioRecorder();
   Timer? _timer;
 
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    textController.dispose();
+    _timer?.cancel();
+    super.onClose();
+  }
+
   void clearText() {
     textController.clear();
     textFieldContent.value = '';
@@ -75,10 +87,12 @@ class ConversationController extends GetxController {
     }
   }
 
+  // Reset Recording State
   void resetRecordingState() {
     isRecording.value = false;
     recordingCompleted.value = false;
     recordingTime.value = 0;
+    recordedFilePath.value = '';
   }
 
   void saveRecording() {
@@ -92,7 +106,7 @@ class ConversationController extends GetxController {
     return '${directory.path}/myFile.m4a';
   }
 
-  //Play Recorded Audio
+  // Play Recorded Audio
   Future<void> playRecordedAudio() async {
     if (recordedFilePath.value.isNotEmpty) {
       await audioPlayer.play(DeviceFileSource(recordedFilePath.value));
@@ -101,19 +115,33 @@ class ConversationController extends GetxController {
       audioPlayer.onPlayerComplete.listen((_) {
         isPlaying.value = false;
       });
-      log(name: 'log-conversation', "isPlaying : $isPlaying");
     }
   }
 
-  Future<void> pauseRecordedAudio() async {
-    await audioPlayer.pause();
-    log(name: 'log-conversation', "playback paused");
+  // Pause Recorded Audio
+  Future<void> stopRecordedAudio() async {
+    await audioPlayer.stop();
+    isPlaying.value = false;
   }
+//endpoints used for conversation. call them from URLs
+// static const start_chat = 'start_chat';
+//   static const chat = 'chat';
+//   static const chat_history = 'history/';
+//   static const chat_list = 'chat-history/';
+//   static const conversation_feedback = '/conversation-feedback';
 
-  @override
-  void onClose() {
-    textController.dispose();
-    _timer?.cancel();
-    super.onClose();
-  }
+  //to start a chat
+  Future<void> startChat() async {}
+
+  //to send messages to chat
+  Future<void> sendMessageToChat() async {}
+
+  //to fetch chat
+  Future<void> fetchChat() async {}
+
+  //to fetch chat lists
+  Future<void> fetchChatLists() async {}
+
+  //to generate conversationFeedback
+  Future<void> generateConversationFeedback() async {}
 }
