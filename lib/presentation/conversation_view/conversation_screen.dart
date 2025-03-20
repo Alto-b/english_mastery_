@@ -82,7 +82,7 @@ class ConversationScreen extends GetView<ConversationController> {
                                   : Icons.play_arrow_rounded,
                               color: Colors.blue),
                           onPressed: (controller.isPlaying.value)
-                              ? controller.pauseRecordedAudio
+                              ? controller.stopRecordedAudio
                               : controller.playRecordedAudio,
                         ),
                         IconButton(
@@ -136,44 +136,6 @@ class ConversationScreen extends GetView<ConversationController> {
                   ),
                 ),
               ),
-
-              // // Recording Controls (Check for Save / Cancel for Reset)
-              // Visibility(
-              //   visible: controller.isRecording.value,
-              //   child: Row(
-              //     children: [
-              //       // Cancel Recording Button
-              //       GestureDetector(
-              //         onTap: () {
-              //           controller.stopRecording(); // Cancels recording
-              //           controller.resetRecordingState(); // Resets to idle
-              //         },
-              //         child: Container(
-              //           padding: const EdgeInsets.all(5),
-              //           decoration: BoxDecoration(
-              //             color: Colors.redAccent,
-              //             shape: BoxShape.circle,
-              //           ),
-              //           child: Icon(Icons.clear, color: Colors.white),
-              //         ),
-              //       ),
-              //       SizedBox(width: 10),
-
-              //       // Save Recording Button
-              //       GestureDetector(
-              //         onTap: controller.saveRecording, // Saves recorded audio
-              //         child: Container(
-              //           padding: const EdgeInsets.all(5),
-              //           decoration: BoxDecoration(
-              //             color: Colors.green,
-              //             shape: BoxShape.circle,
-              //           ),
-              //           child: Icon(Icons.check, color: Colors.white),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
 
               // Send Button (Visible only if recorded or text entered)
               Obx(() => Visibility(
