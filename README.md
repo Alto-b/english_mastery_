@@ -34,7 +34,7 @@ English Mastery is a comprehensive self-learning application designed to help us
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repository/english-mastery.git
+   git clone https://github.com/Alto-b/english_mastery_.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -65,6 +65,5 @@ English Mastery is a comprehensive self-learning application designed to help us
 ## Contribution
 Contributions are welcome! Feel free to submit issues or pull requests to improve the project.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+
 
